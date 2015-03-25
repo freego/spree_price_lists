@@ -1,0 +1,41 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:listing_price_lists) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to Spree.t(:new_price_list), new_object_url, icon: 'plus', id: 'admin_new_price_list_link' %>
+  </li>
+<% end %>
+
+<table class="index sortable" id="listing_price_lists" data-hook data-sortable-link="<%= update_positions_admin_price_lists_url %>">
+  <colgroup>
+    <col style="width: 10%">
+    <col style="width: 65%">
+    <col style="width: 10%">
+    <col style="width: 15%">
+  </colgroup>
+  <thead>
+    <tr data-hook="admin_price_lists_index_headers">
+      <th class="no-border"></td>
+      <th><%= t(:name, scope: 'activerecord.attributes.spree/price_list') %></th>
+      <th><%= t(:default, scope: 'activerecord.attributes.spree/price_list') %></th>
+      <th data-hook="admin_price_lists_index_header_actions" class="actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @price_lists.each do |price_list| %>
+      <tr id="<%= spree_dom_id price_list %>" data-hook="admin_price_lists_index_rows" class="<%= cycle('odd', 'even')%>">
+        <td class="no-border"><span class="handle"></span></td>
+        <td><%= link_to price_list.name, edit_object_url(price_list) %></td>
+        <td><%= price_list.default ? "✓" : "" %></td>
+        <td data-hook="admin_price_lists_index_row_actions" class="actions">
+          <%= link_to_edit price_list, no_text: true %>
+          <%= link_to_delete price_list, no_text: true %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @price_lists %>

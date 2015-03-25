@@ -1,0 +1,9 @@
+<%= render partial: 'spree/admin/shared/product_sub_menu' %>
+
+<%= render partial: 'spree/admin/shared/product_tabs', locals: { current: 'Price Lists' } %>
+
+<fieldset class="no-border-top">
+  <% @product.variants_including_master.each do |variant| %>
+    <%= render partial: 'variant_prices', locals: { variant: variant } %>
+  <% end %>
+</fieldset>

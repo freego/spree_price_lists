@@ -1,0 +1,24 @@
+<div data-hook="admin_price_list_form_fields" class="row">
+  <div class="twelve columns">
+    <%= f.field_container :name do %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'fullwidth' %>
+      <%= error_message_on :price_list, :name %>
+    <% end %>
+    <%= f.field_container :internal_name do %>
+      <%= f.label :internal_name %>
+      <%= f.text_field :internal_name, class: 'fullwidth' %>
+      <%= error_message_on :price_list, :internal_name %>
+    <% end %>
+    <%= f.field_container :currency do %>
+      <%= f.label :currency %>
+      <%= f.text_field :currency, class: 'fullwidth' %>
+      <%= error_message_on :price_list, :currency %>
+    <% end %>
+    <%= f.field_container :default do %>
+      <%= f.label :default %>
+      <%= f.check_box :default, class: 'fullwidth' %>
+      <%= error_message_on :price_list, :default %>
+    <% end %>
+  </div>
+</div>

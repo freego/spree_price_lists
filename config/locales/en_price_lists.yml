@@ -1,0 +1,16 @@
+en:
+  spree:
+    admin:
+      tab:
+        price_lists: "PriceLists"
+    new_price_list: "New PriceList"
+    listing_price_lists: "Listing PriceLists"
+    editing_price_list: "Editing PriceList"
+    back_to_price_lists_list: "Back to PriceLists list"
+  activerecord:
+    attributes:
+      spree/price_list:
+        name: Name
+        internal_name: Internal Name
+        currency: Currency
+        position: Position

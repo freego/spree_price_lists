@@ -1,0 +1,24 @@
+it:
+  spree:
+    admin:
+      tab:
+        price_lists: "Listini"
+    price_lists: "Listini"
+    new_price_list: "Nuovo Listino"
+    listing_price_lists: "Lista Listini"
+    editing_price_list: "Modifica Listino"
+    back_to_price_lists_list: "Torna alla lista Listini"
+  activerecord:
+    attributes:
+      spree/price_list:
+        name: Nome
+        internal_name: Nome Interno
+        currency: Valuta
+        position: Position
+        default: Default
+    errors:
+      models:
+        spree/line_item:
+          attributes:
+            price_list:
+              must_match_price_list: Il listino non corrisponde

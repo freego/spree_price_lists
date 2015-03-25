@@ -1,0 +1,23 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:new_price_list) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to Spree.t(:back_to_price_lists_list), collection_url, icon: 'arrow-left' %>
+  </li>
+<% end %>
+
+<div data-hook="admin_price_list_new_form_header">
+  <%= render 'spree/shared/error_messages', target: @price_list %>
+</div>
+
+<div data-hook="admin_price_list_new_form">
+  <%= form_for [:admin, @price_list] do |f| %>
+    <%= render 'form', f: f %>
+
+    <div data-hook="admin_price_list_new_form_buttons">
+      <%= render 'spree/admin/shared/new_resource_links' %>
+    </div>
+  <% end %>
+</div>
