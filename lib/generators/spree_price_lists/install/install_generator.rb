@@ -18,23 +18,18 @@ module SpreePriceLists
         run 'bundle exec rake railties:install:migrations FROM=spree_price_lists'
       end
 
+      def run_migrations
+        run 'bundle exec rake db:migrate'
+      end
+
       def generate_default_price_list
-        puts "=> Generating a default Price List, if none"
+        puts "=> Generating a default Price List"
         Spree::PriceList.first_or_create!(name: "Default", currency: "EUR")
       end
 
       def update_prices
         puts "=> Assigning all prices to the first price list"
         Spree::Price.where(price_list_id: nil).update_all(price_list_id: Spree::PriceList.first.id)
-      end
-
-      def run_migrations
-        run_migrations = options[:auto_run_migrations] || ['', 'y', 'Y'].include?(ask 'Would you like to run the migrations now? [Y/n]')
-        if run_migrations
-          run 'bundle exec rake db:migrate'
-        else
-          puts 'Skipping rake db:migrate, don\'t forget to run it!'
-        end
       end
     end
   end
