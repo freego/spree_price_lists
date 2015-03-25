@@ -24,12 +24,12 @@ module SpreePriceLists
 
       def generate_default_price_list
         puts "=> Generating a default Price List"
-        Spree::PriceList.first_or_create!(name: "Default", currency: "EUR")
+        Spree::PriceList.first_or_create!(name: "Default", default: true)
       end
 
       def update_prices
         puts "=> Assigning all prices to the first price list"
-        Spree::Price.where(price_list_id: nil).update_all(price_list_id: Spree::PriceList.first.id)
+        Spree::Price.where(price_list_id: nil).update_all(price_list_id: Spree::PriceList.default.id)
       end
     end
   end
