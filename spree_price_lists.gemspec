@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_price_lists'
   s.version     = '2.4.0'
-  s.summary     = 'Multiple prices support for Spree'
+  s.summary     = 'Multiple price lists support for Spree'
   s.description = s.summary
   s.required_ruby_version = '>= 1.9.3'
 
