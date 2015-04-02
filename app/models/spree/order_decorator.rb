@@ -15,7 +15,7 @@ module Spree
     end
 
     def set_price_list
-      self.price_list ||= PriceList.first
+      self.price_list ||= PriceList.default
     end
   end
 end

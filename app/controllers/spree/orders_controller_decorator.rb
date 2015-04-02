@@ -3,7 +3,7 @@ module Spree
     def populate
       populator = Spree::OrderPopulatorForPriceLists.new(current_order(create_order_if_necessary: true), current_price_list)
 
-      if populator.populate(params[:variant_id], params[:quantity])
+      if populator.populate(params[:variant_id], params[:quantity], params[:options])
         respond_with(@order) do |format|
           format.html { redirect_to cart_path }
         end
