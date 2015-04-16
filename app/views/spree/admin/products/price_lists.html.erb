@@ -1,9 +1,16 @@
-<%= render partial: 'spree/admin/shared/product_sub_menu' %>
+<%= render 'spree/admin/shared/product_tabs', current: 'Price Lists' %>
 
-<%= render partial: 'spree/admin/shared/product_tabs', locals: { current: 'Price Lists' } %>
-
-<fieldset class="no-border-top">
+<div class="row">
   <% @product.variants_including_master.each do |variant| %>
-    <%= render partial: 'variant_prices', locals: { variant: variant } %>
+    <div class="col-md-4">
+      <h5><%= variant.sku %> (<%= variant.is_master? ? Spree.t(:master) : variant.options_text %>)</h5>
+      <% @price_lists.each do |list| %>
+        <div>
+          <%= list.name %>:
+          <%= variant.price_for(list).display_price %>
+        </div>
+      <% end %>
+      <br><br>
+    </div>
   <% end %>
-</fieldset>
+</div>

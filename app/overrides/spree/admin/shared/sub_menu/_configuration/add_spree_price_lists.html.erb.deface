@@ -1,0 +1,2 @@
+<!-- insert_bottom "[data-hook='admin_configurations_sidebar_menu']" -->
+<%= configurations_sidebar_menu_item Spree.t(:price_lists), admin_price_lists_path if can? :manage, Spree::PriceList %>

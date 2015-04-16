@@ -3,23 +3,15 @@
 <% end %>
 
 <% content_for :page_actions do %>
-  <li>
-    <%= button_link_to Spree.t(:new_price_list), new_object_url, icon: 'plus', id: 'admin_new_price_list_link' %>
-  </li>
-<% end %>
+  <%= button_link_to Spree.t(:new_price_list), new_object_url, class: 'btn-success', icon: 'add', id: 'admin_new_price_list_link' %>
+<% end if can?(:create, Spree::PriceList) %>
 
-<table class="index sortable" id="listing_price_lists" data-hook data-sortable-link="<%= update_positions_admin_price_lists_url %>">
-  <colgroup>
-    <col style="width: 10%">
-    <col style="width: 65%">
-    <col style="width: 10%">
-    <col style="width: 15%">
-  </colgroup>
+<table class="table sortable" id="listing_price_lists" data-hook data-sortable-link="<%= update_positions_admin_price_lists_url %>">
   <thead>
     <tr data-hook="admin_price_lists_index_headers">
       <th class="no-border"></td>
-      <th><%= t(:name, scope: 'activerecord.attributes.spree/price_list') %></th>
-      <th><%= t(:default, scope: 'activerecord.attributes.spree/price_list') %></th>
+      <th class="text-center"><%= t(:name, scope: 'activerecord.attributes.spree/price_list') %></th>
+      <th class="text-center"><%= t(:default, scope: 'activerecord.attributes.spree/price_list') %></th>
       <th data-hook="admin_price_lists_index_header_actions" class="actions"></th>
     </tr>
   </thead>
@@ -27,9 +19,9 @@
     <% @price_lists.each do |price_list| %>
       <tr id="<%= spree_dom_id price_list %>" data-hook="admin_price_lists_index_rows" class="<%= cycle('odd', 'even')%>">
         <td class="no-border"><span class="handle"></span></td>
-        <td><%= link_to price_list.name, edit_object_url(price_list) %></td>
-        <td><%= price_list.default ? "✓" : "" %></td>
-        <td data-hook="admin_price_lists_index_row_actions" class="actions">
+        <td class="text-center"><%= link_to price_list.name, edit_object_url(price_list) %></td>
+        <td class="text-center"><%= price_list.default ? "✓" : "" %></td>
+        <td data-hook="admin_price_lists_index_row_actions" class="actions actions-3 text-right">
           <%= link_to_edit price_list, no_text: true %>
           <%= link_to_delete price_list, no_text: true %>
         </td>
