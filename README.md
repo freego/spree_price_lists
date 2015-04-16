@@ -3,8 +3,8 @@ SpreePriceLists
 
 Multiple price lists support for Spree.
 
-You can have multiple price lists for each Variant, and assign a different to
-each session via custom logic.
+You can have multiple price lists for each Variant, and assign a different one
+to each session via some logic.
 
 Installation
 ------------
@@ -12,7 +12,7 @@ Installation
 Add spree_price_lists to your Gemfile:
 
 ```ruby
-gem 'spree_price_lists'
+gem 'spree_price_lists', github: 'freego/spree_price_lists', branch: 'X-X-stable'
 ```
 
 Bundle your dependencies and run the installation generator:
