@@ -1,5 +1,7 @@
 module Spree
   class PriceList < ActiveRecord::Base
+    acts_as_list
+
     has_many :prices
 
     validates :name, :internal_name, :currency,
@@ -11,6 +13,9 @@ module Spree
 
     scope :by_currency, ->(currency) { where(currency: currency) }
     scope :without_default_list, -> { where.not(default: true) }
+
+    default_scope { order("#{self.table_name}.position,
+                          #{self.table_name}.created_at") }
 
     def self.default
       find_by(default: true) || first || create!(name: "Default", default: true)

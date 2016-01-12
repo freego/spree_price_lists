@@ -1,0 +1,17 @@
+<!-- replace_contents "[data-hook='admin_product_form_price']" -->
+
+<%= f.field_container :price, class: ['form-group'] do %>
+  <%= f.label :price, raw(Spree.t(:master_price) + content_tag(:span, ' *', class: "required")) %>
+
+  <div class="input-group">
+    <div class="input-group-addon"><%= @product.master.default_price.price_list.name %></div>
+    <%= f.text_field :price, value: number_to_currency(@product.price, unit: ''), class: 'form-control', disabled: (cannot? :update, Spree::Price) %>
+    <div class="input-group-addon"><%= @product.master.default_price.price_list.currency %></div>
+  </div>
+
+  <%= f.error_message_on :price %>
+<% end %>
+
+<%= f.fields_for :master do |fm| %>
+  <%= render partial: 'spree/admin/shared/price_list_fields', locals: { f: fm } %>
+<% end %>

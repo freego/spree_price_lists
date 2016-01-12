@@ -1,0 +1,11 @@
+<!-- replace_contents "[data-hook='price']" -->
+
+<%= f.label :price, Spree.t(:price) %>
+
+<div class="input-group">
+  <div class="input-group-addon"><%= @variant.default_price.price_list.name %></div>
+  <%= f.text_field :price, :value => number_to_currency(@variant.price, :unit => ''), :class => 'form-control' %>
+  <div class="input-group-addon"><%= @variant.default_price.price_list.currency %></div>
+</div>
+
+<%= render partial: 'spree/admin/shared/price_list_fields', locals: { f: f } %>

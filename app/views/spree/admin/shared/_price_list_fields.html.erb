@@ -1,0 +1,12 @@
+<%= f.fields_for :prices do |fp| %>
+  <div class="form-group">
+    <% unless fp.object.price_list.default? %>
+      <%= fp.hidden_field :price_list_id %>
+      <div class="input-group">
+        <div class="input-group-addon"><%= fp.object.price_list.name %></div>
+        <%= fp.text_field :amount, :class => 'form-control' %>
+        <div class="input-group-addon"><%= fp.object.price_list.currency %></div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

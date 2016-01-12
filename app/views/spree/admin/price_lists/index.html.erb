@@ -18,7 +18,9 @@
   <tbody>
     <% @price_lists.each do |price_list| %>
       <tr id="<%= spree_dom_id price_list %>" data-hook="admin_price_lists_index_rows" class="<%= cycle('odd', 'even')%>">
-        <td class="no-border"><span class="handle"></span></td>
+        <td class="move-handle">
+          <span class="icon icon-sort handle"></span>
+        </td>
         <td class="text-center"><%= link_to price_list.name, edit_object_url(price_list) %></td>
         <td class="text-center"><%= price_list.default ? "✓" : "" %></td>
         <td data-hook="admin_price_lists_index_row_actions" class="actions actions-3 text-right">

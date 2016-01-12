@@ -1,6 +1,8 @@
 module Spree
   Variant.class_eval do
 
+    accepts_nested_attributes_for :prices
+
     has_one :default_price,
       -> { where price_list_id: Spree::PriceList.default.id },
       class_name: 'Spree::Price',
