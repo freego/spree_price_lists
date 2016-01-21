@@ -10,7 +10,7 @@ Spree::Admin::ProductsController.class_eval do
 
   def build_prices
     Spree::PriceList.where.not(id: price_list_ids).each do |pl|
-      @object.master.prices.build(price_list: pl) unless pl.default?
+      @object.master.prices.build(price_list: pl)
     end
   end
 
