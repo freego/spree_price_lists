@@ -14,3 +14,10 @@ en:
         internal_name: Internal Name
         currency: Currency
         position: Position
+        default: Default
+    errors:
+      models:
+        spree/line_item:
+          attributes:
+            price_list:
+              must_match_price_list: The price list does not match
