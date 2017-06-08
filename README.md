@@ -1,6 +1,17 @@
 SpreePriceLists
 ===============
 
+## WARNING
+This gem is just an extraction of a functionality from a old, custom Spree
+store and overrides lots of core Spree methods.
+It's NOT complete, tested or production-ready.
+
+I suggest using [Solidus](https://github.com/solidusio/solidus) 1.3+.
+Classes like `PricingOptions` and `PriceSelector` should facilitate the
+implementation of the "price lists" concepts.
+
+---
+
 Multiple price lists support for Spree.
 
 You can have multiple price lists for each Variant, and assign a different one
